@@ -1,0 +1,97 @@
+# 📦 Интернет-магазин (Django проект)
+
+##  Описание проекта
+
+Данный проект представляет собой учебный веб-сайт интернет-магазина, разработанный на фреймворке **Django**.
+Проект включает базовую структуру сайта с главной страницей и страницей контактов, а также использует Bootstrap для стилизации интерфейса.
+
+---
+
+##  Технологии
+
+- Python 3.x
+- Django
+- HTML / CSS
+- Bootstrap (локальная версия)
+- Git / GitFlow
+
+---
+
+##  Структура проекта
+
+
+manage.py
+config/
+settings.py
+urls.py
+catalog/
+views.py
+urls.py
+templates/
+home.html
+contacts.html
+static/
+css/
+bootstrap.min.css
+style.css
+js/
+script.js
+
+
+---
+
+## Установка и запуск проекта
+
+### 1. Клонирование репозитория
+
+```bash
+git clone <url_репозитория>
+cd <папка_проекта>
+2. Создание виртуального окружения
+python -m venv venv
+
+Активация:
+
+Windows:
+
+venv\Scripts\activate
+3. Установка зависимостей
+pip install django
+4. Применение миграций
+python manage.py migrate
+5. Запуск сервера
+python manage.py runserver
+ Страницы проекта
+Главная страница: http://127.0.0.1:8000/
+Контакты: http://127.0.0.1:8000/contacts/
+ Маршрутизация
+
+Приложение catalog содержит маршруты:
+
+/ — главная страница (home)
+/contacts/ — страница контактов
+Стилизация
+
+В проекте используется Bootstrap, подключён локально:
+
+static/css/bootstrap.min.css
+
+Дополнительно используется кастомный CSS:
+
+static/css/style.css
+GitFlow
+
+В проекте используется модель ветвления GitFlow:
+
+main — стабильная версия проекта
+develop — основная ветка разработки
+feature-ветки — для выполнения отдельных задач
+ .gitignore
+
+В .gitignore исключены:
+
+venv/
+__pycache__/
+файлы IDE
+системные файлы
+.env
