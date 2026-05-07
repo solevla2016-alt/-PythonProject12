@@ -3,6 +3,33 @@ import catalog
 
 
 # Create your models here.
+class Category(models.Model):
+    name = (
+        models.CharField(
+            max_length=100,
+            verbose_name="Название категории продукта",
+            help_text="Введите название категории продукта",
+        ),
+    )
+    description = (
+        models.TextField(
+            verbose_name="Описание категории продукта",
+            help_text="Введите описание категории продукта",
+            blank=True,
+            null=True,
+        ),
+    )
+
+
+class Meta:
+    verbose_name = ("Название категории продукта",)
+    verbose_name_plurul = ("Название категории продуктов",)
+    ordering = ["name", "description"]
+
+    def __str__(self):
+        return self.verbose_name
+
+
 class Product(models.Model):
     name = (
         models.CharField(
@@ -11,13 +38,14 @@ class Product(models.Model):
             help_text="Введите наименование продукта",
         ),
     )
-    description = (
-        models.TextFieldField(
-            verbose_name="Описание продукта",
-            help_text="Введите описание продукта",
-            blank=True,
-            null=True,
-        ),
+    description = models.ForeignKey(
+        to=Category,
+        on_delete=models.SET_NULL,
+        verbose_name="Описание продукта",
+        help_text="Введите описание продукта",
+        blank=True,
+        null=True,
+        related_name="products",
     )
     photo = (
         models.ImageField(
@@ -58,38 +86,8 @@ class Product(models.Model):
 
 class Meta:
     verbose_name = ("Наименование продукта",)
-    verbose_name_plurul = "Наименование продуктов"
+    verbose_name_plurul = ("Наименование продуктов",)
     ordering = ["name", "description", "category", "price", "updated_at", "created_at"]
 
     def __str__(self):
         return self.verbose_name
-
-
-class Category(models.Model):
-    name = (
-        models.CharField(
-            max_length=100,
-            verbose_name="Название категории продукта",
-            help_text="Введите Название категории продукта",
-        ),
-    )
-    description = (
-        models.TextField(
-            verbose_name="Описание категории продукта",
-            help_text="Введите описание категории продукта",
-            blank=True,
-            null=True,
-        ),
-    )
-
-
-class Meta:
-    verbose_name = ("Название категории продукта",)
-    verbose_name_plurul = "Название категории продуктов"
-    ordering = ["name", "description"]
-
-    def __str__(self):
-        return self.verbose_name
-
-
-# наименование,описание, изображение, категория, цена  за покупку, дата  создания, дата последнего  изменения.
