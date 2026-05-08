@@ -111,3 +111,10 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = (BASE_DIR / "static",)
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/admin/'
+
+# Настройки сессий
+SESSION_COOKIE_SECURE = False  # Только для разработки (HTTP)
+CSRF_COOKIE_SECURE = False   # Только для разработки
