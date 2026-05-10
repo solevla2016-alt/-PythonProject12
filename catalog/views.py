@@ -17,6 +17,6 @@ def home(request):
     for product in latest_products:
         print(product.name, product.price)
 
-    return render(request, 'catalog/home.html', {
+    return render(request, 'home.html', {
         'latest_products': latest_products
     })
