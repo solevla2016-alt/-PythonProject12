@@ -118,3 +118,6 @@ LOGIN_REDIRECT_URL = '/admin/'
 # Настройки сессий
 SESSION_COOKIE_SECURE = False  # Только для разработки (HTTP)
 CSRF_COOKIE_SECURE = False   # Только для разработки
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

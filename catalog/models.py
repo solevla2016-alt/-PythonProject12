@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Category(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name="Название категории продукта",
         help_text="Введите название категории продукта",
-        default="Без названия"
+        default="Введите название"
     )
     description = models.TextField(
         verbose_name="Описание категории продукта",
@@ -22,6 +23,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     name = models.CharField(
@@ -54,6 +56,7 @@ class Product(models.Model):
     price = models.IntegerField(
         verbose_name="Цена продукта",
         help_text="Введите цену продукта",
+        default=0
     )
     created_at = models.DateField(
         verbose_name="Дата создания",
