@@ -78,3 +78,11 @@ class Product(models.Model):
         return self.name
 
 
+class Contact(models.Model):
+    city = models.CharField(max_length=100, verbose_name="Город")
+    phone = models.CharField(max_length=30, verbose_name="Телефон")
+    email = models.EmailField(verbose_name="Email")
+    address = models.TextField(verbose_name="Адрес", blank=True)
+
+    def __str__(self):
+        return self.city
