@@ -12,7 +12,7 @@ class Command(BaseCommand):
         Category.objects.all().delete()
 
         # загрузка фикстур
-        call_command("loaddata", "categories.json")
-        call_command("loaddata", "products.json")
+        call_command("loaddata", "category_fixture.json")
+        call_command("loaddata", "products_fixture.json")
 
         self.stdout.write(self.style.SUCCESS("Данные загружены из фикстур"))
