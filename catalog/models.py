@@ -7,7 +7,7 @@ class Category(models.Model):
         max_length=100,
         verbose_name="Название категории продукта",
         help_text="Введите название категории продукта",
-        default="Введите название"
+        default="Введите название",
     )
     description = models.TextField(
         verbose_name="Описание категории продукта",
@@ -19,7 +19,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Название категории продукта"
         verbose_name_plural = "Названия категорий продуктов"
-        ordering = ['name', 'description']
+        ordering = ["name", "description"]
 
     def __str__(self):
         return self.name
@@ -38,7 +38,7 @@ class Product(models.Model):
         null=True,
     )
     photo = models.ImageField(
-        upload_to='catalog/photo/',
+        upload_to="catalog/photo/",
         blank=True,
         null=True,
         verbose_name="Фото продукта",
@@ -54,25 +54,23 @@ class Product(models.Model):
         related_name="products",
     )
     price = models.IntegerField(
-        verbose_name="Цена продукта",
-        help_text="Введите цену продукта",
-        default=0
+        verbose_name="Цена продукта", help_text="Введите цену продукта", default=0
     )
     created_at = models.DateField(
         verbose_name="Дата создания",
         help_text="Введите дату создания",
-        default=timezone.now
+        default=timezone.now,
     )
     updated_at = models.DateField(
         verbose_name="Дата последнего изменения",
         help_text="Введите дату последнего изменения",
-        default=timezone.now
+        default=timezone.now,
     )
 
     class Meta:
         verbose_name = "Наименование продукта"
         verbose_name_plural = "Наименования продуктов"
-        ordering = ['name', 'category', 'price', 'updated_at', 'created_at']
+        ordering = ["name", "category", "price", "updated_at", "created_at"]
 
     def __str__(self):
         return self.name

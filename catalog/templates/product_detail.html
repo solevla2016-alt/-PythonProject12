@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <h1 class="card-title">
+            {{ product.name }}
+        </h1>
+
+        <p class="card-text">
+            {{ product.description }}
+        </p>
+
+        <h3>
+            Цена: {{ product.price }}
+        </h3>
+
+        <p>
+            Создан: {{ product.created_at }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
