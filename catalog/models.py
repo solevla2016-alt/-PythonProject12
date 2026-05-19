@@ -51,7 +51,7 @@ class Product(models.Model):
         help_text="Выберите категорию продукта",
         blank=True,
         null=True,
-        related_name="products",
+        related_name="photo",
     )
     price = models.IntegerField(
         verbose_name="Цена продукта", help_text="Введите цену продукта", default=0

@@ -6,25 +6,52 @@
 
 {% block content %}
 
-<div class="card">
+<div class="col-6 mx-auto">
 
-    <div class="card-body">
+    <div class="card mb-4 box-shadow">
 
-        <h1 class="card-title">
-            {{ product.name }}
-        </h1>
+        {% if product.photo %}
 
-        <p class="card-text">
-            {{ product.description }}
-        </p>
+        <img src="{{ product.photo.url }}"
+             class="img-fluid mb-3"
+             alt="{{ product.name }}">
 
-        <h3>
-            Цена: {{ product.price }}
-        </h3>
+        {% endif %}
 
-        <p>
-            Создан: {{ product.created_at }}
-        </p>
+        <div class="card-header">
+
+            <h2>
+                {{ product.name }}
+            </h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <h3>
+                {{ product.price }} ₽
+            </h3>
+
+            <p>
+                {{ product.description }}
+            </p>
+
+            <p>
+                Категория: {{ product.category }}
+            </p>
+
+            <p>
+                Дата создания: {{ product.created_at }}
+            </p>
+
+            <a href="{% url 'catalog:home' %}"
+               class="btn btn-outline-secondary">
+
+                ← Назад в каталог
+
+            </a>
+
+        </div>
 
     </div>
 

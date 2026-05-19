@@ -8,16 +8,26 @@
 
 <div class="row text-center">
 
-    {% for product in latest_products %}
+    {% for product in products %}
 
     <div class="col-3">
 
-        <div class="card mb-4 box-shadow">
+        <div class="card mb-4 box-shadow h-100">
+
+            {% if product.photo %}
+
+            <img src="{{ product.photo.url }}"
+                 class="card-img-top"
+                 alt="{{ product.name }}">
+
+            {% endif %}
 
             <div class="card-header">
+
                 <h4 class="my-0 font-weight-normal">
                     {{ product.name }}
                 </h4>
+
             </div>
 
             <div class="card-body">
@@ -34,10 +44,6 @@
 
                     <li>
                         Категория: {{ product.category }}
-                    </li>
-
-                    <li>
-                        Дата создания: {{ product.created_at }}
                     </li>
 
                 </ul>

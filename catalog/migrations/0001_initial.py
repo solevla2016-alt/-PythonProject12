@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                         help_text="Введите описание продукта",
                         null=True,
                         on_delete=django.db.models.deletion.SET_NULL,
-                        related_name="products",
+                        related_name="photo",
                         to="catalog.category",
                         verbose_name="Описание продукта",
                     ),
