@@ -1,5 +1,4 @@
 from django import forms
-
 from catalog.models import Product
 
 
@@ -52,3 +51,6 @@ class ProductForm(forms.ModelForm):
                 }
             ),
         }
+
+
+

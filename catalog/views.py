@@ -1,49 +1,46 @@
-from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    TemplateView,
+)
+
 from catalog.models import Product
-from catalog.models import Contact
-from django.shortcuts import render, get_object_or_404
 from catalog.forms import ProductForm
 
 
-def home(request):
+class HomeListView(ListView):
 
-    products = Product.objects.all()
+    model = Product
 
-    return render(
-        request,
-        "home.html",
-        {"products": products}
-    )
+    template_name = "home.html"
+
+    context_object_name = "products"
 
 
-def contacts(request):
+class ContactsTemplateView(TemplateView):
 
-    contacts_list = Contact.objects.all()
-
-    return render(request, "contacts.html", {"contacts": contacts_list})
+    template_name = "contacts.html"
 
 
-def product_detail(request, pk):
+class ProductDetailView(DetailView):
 
-    product = get_object_or_404(Product, pk=pk)
+    model = Product
 
-    return render(request,"product_detail.html",{"product": product})
+    template_name = "product_detail.html"
+
+    context_object_name = "product"
 
 
-def product_create(request):
+class ProductCreateView(CreateView):
 
-    if request.method == "POST":
+    model = Product
 
-        form = ProductForm(request.POST, request.FILES)
+    form_class = ProductForm
 
-        if form.is_valid():
-            form.save()
+    template_name = "product_form.html"
 
-            return redirect("catalog:home")
-
-    else:
-        form = ProductForm()
-
-    return render(request,"product_form.html",{"form": form})
+    success_url = reverse_lazy("catalog:home")
 
 
