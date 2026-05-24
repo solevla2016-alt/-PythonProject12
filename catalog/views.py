@@ -1,8 +1,46 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    TemplateView,
+)
 
-def home(request):
-    return render(request, 'home.html')
+from catalog.models import Product
+from catalog.forms import ProductForm
 
-def contacts(request):
-    return render(request, 'contacts.html')
+
+class HomeListView(ListView):
+
+    model = Product
+
+    template_name = "home.html"
+
+    context_object_name = "products"
+
+
+class ContactsTemplateView(TemplateView):
+
+    template_name = "contacts.html"
+
+
+class ProductDetailView(DetailView):
+
+    model = Product
+
+    template_name = "product_detail.html"
+
+    context_object_name = "product"
+
+
+class ProductCreateView(CreateView):
+
+    model = Product
+
+    form_class = ProductForm
+
+    template_name = "product_form.html"
+
+    success_url = reverse_lazy("catalog:home")
+
 
