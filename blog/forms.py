@@ -1,5 +1,4 @@
 from django.forms import ModelForm
-
 from blog.models import Blog
 
 
@@ -15,3 +14,4 @@ class BlogForm(ModelForm):
             "preview",
             "is_published",
         )
+
