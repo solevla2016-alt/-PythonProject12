@@ -21,6 +21,10 @@ urlpatterns = [
         "blog/",
         include("blog.urls")
     ),
+    path(
+        "users/",
+        include("users.urls")
+    )
 ]
 
 if settings.DEBUG:
