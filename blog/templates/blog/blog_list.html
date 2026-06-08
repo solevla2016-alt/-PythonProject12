@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Блог</h1>
+
+        <a href="{% url 'blog:create' %}" class="btn btn-primary">
+            + Новая статья
+        </a>
+    </div>
+
+    <div class="row">
+
+        {% for object in object_list %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                {% if object.preview %}
+                <img src="{{ object.preview.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        {{ object.title }}
+                    </h5>
+
+                    <p class="card-text">
+                        {{ object.content|truncatechars:120 }}
+                    </p>
+
+                    <p class="text-muted small">
+                        👁 {{ object.views_count }} просмотров
+                    </p>
+
+                    <a href="{% url 'blog:detail' object.pk %}" class="btn btn-outline-primary btn-sm">
+                        Читать
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+        <p>Статей пока нет</p>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
