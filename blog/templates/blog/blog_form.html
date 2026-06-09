@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Форма статьи{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="mb-4">Статья</h1>
+
+    <div class="card p-4 shadow-sm">
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-success">
+                Сохранить
+            </button>
+
+            <a href="{% url 'blog:list' %}" class="btn btn-secondary">
+                Отмена
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

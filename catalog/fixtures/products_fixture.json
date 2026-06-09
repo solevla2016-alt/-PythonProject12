@@ -1,0 +1,54 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Конфеты Коровка",
+      "description": "",
+      "photo": "",
+      "category": 1,
+      "price": 900,
+      "created_at": "2026-05-07",
+      "updated_at": "2026-05-07"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Торт Меренговый",
+      "description": "",
+      "photo": "",
+      "category": 1,
+      "price": 1500,
+      "created_at": "2026-05-07",
+      "updated_at": "2026-05-07"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Молоко",
+      "description": "",
+      "photo": "",
+      "category": 2,
+      "price": 100,
+      "created_at": "2026-05-08",
+      "updated_at": "2026-05-08"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Баранина",
+      "description": "",
+      "photo": "",
+      "category": 3,
+      "price": 980,
+      "created_at": "2026-05-08",
+      "updated_at": "2026-05-08"
+    }
+  }
+]
