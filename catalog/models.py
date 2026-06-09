@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 
 
 
@@ -67,11 +68,37 @@ class Product(models.Model):
         help_text="Введите дату последнего изменения",
         default=timezone.now,
     )
+    publication_status = models.BooleanField(
+        default=False,
+        verbose_name="Опубликован"
+    )
+
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Владелец",
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = "Наименование продукта"
         verbose_name_plural = "Наименования продуктов"
-        ordering = ["name", "category", "price", "updated_at", "created_at"]
+
+        ordering = [
+            "name",
+            "category",
+            "price",
+            "updated_at",
+            "created_at",
+        ]
+
+        permissions = [
+            (
+                "can_unpublish_product",
+                "Can unpublish product"
+            ),
+        ]
 
     def __str__(self):
         return self.name
